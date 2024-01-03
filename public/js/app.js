@@ -99,3 +99,22 @@ userInfo = [username,useremail, ageuser, passuser];
 console.log(userInfo);
 ask();
 }
+
+
+// function for log in
+function login() {
+
+    console.log(userInfo)
+    let logemail = prompt(`insert ur email to login`)
+            while (logemail !== userInfo[1]) {
+                logemail = prompt(`insert ur email to login`)
+            }
+
+    let pass = prompt(`insert ur password to login`)
+            while (pass !== userInfo[3]) {
+                pass = prompt(`insert ur password to login`)
+            }
+
+    ask()
+
+}
