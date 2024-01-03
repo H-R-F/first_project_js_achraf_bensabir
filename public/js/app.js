@@ -130,3 +130,9 @@ function changepass() {
             console.log(userInfo);
             ask()
     }
+
+
+// function for log out
+function logout() {
+    ask()
+}
