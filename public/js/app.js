@@ -118,3 +118,15 @@ function login() {
     ask()
 
 }
+
+// function for change password
+function changepass() {
+    let checkemail = prompt(`pleas enter ur email to change ur password`)
+            while (checkemail !== userInfo[1]) {
+                checkemail = prompt(`pleas enter ur email to change ur password`)
+            }
+            let changepass = prompt(`pleas enter ur new password`)
+            userInfo[3] = changepass
+            console.log(userInfo);
+            ask()
+    }
