@@ -29,3 +29,9 @@ let pass;
             }
         }
 ask()
+
+// for exit
+if (askuser == `exit`) {
+    askuser = prompt('choose between signing up, logging in, or changing the password')
+} 
+
