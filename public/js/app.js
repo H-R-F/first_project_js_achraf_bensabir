@@ -95,7 +95,7 @@ while (confirmpassuser !== passuser) {
 }
 
 money = Math.round(Math.random()*100000)
-userInfo = [username,useremail, ageuser, passuser];
+userInfo = [username,useremail, ageuser, passuser, money];
 console.log(userInfo);
 ask();
 }
