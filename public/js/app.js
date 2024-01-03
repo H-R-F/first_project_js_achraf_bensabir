@@ -6,12 +6,15 @@ let money ;
 // let user;
 let pass;
         let askuser;
-        function ask(params) {
+        function ask() {
             askuser = prompt('choose between signing up, logging in, or changing the password, or exit')
-            while (askuser !== `sign up` && askuser !== `log in` && askuser !== `change password` && askuser !== `exit`) {
-                askuser = prompt('choose between signing up, logging in, or changing the password')
+            while (askuser !== `sign up` && askuser !== `log in` && askuser !== `change password` && askuser !== `exit` && askuser !== `log out`) {
+                askuser = prompt('choose between signing up, logging in, or changing the password, or exit')
             }
             switch (askuser) {
+                case `exit`:
+                    exit()
+                    break;
                 case `sign up`:
                     signup2()
                     break;
@@ -21,7 +24,7 @@ let pass;
                 case `change password`:
                     changepass()
                     break
-                case `logout`:
+                case `log out`:
                     logout()
                     break
                 default:
@@ -31,13 +34,15 @@ let pass;
 ask()
 
 // for exit
-if (askuser == `exit`) {
-    askuser = prompt('choose between signing up, logging in, or changing the password')
-} 
-
+function exit() {
+    while (askuser == `exit`) {
+        ask()
+    } 
+}
 
 // function for sign up
-var userInfo = [];
+var userInfo ;
+
 function signup2() {
 
     username = prompt(`insert ur name`)
@@ -74,11 +79,14 @@ function signup2() {
     }
     useremail = useremail.trim().toLocaleLowerCase()
 
-    ageuser = prompt(`insert ur age`)
+    ageuser = parseInt(prompt(`insert ur age`))
 
-
-    while (specials.test(ageuser) || letterssp.test(ageuser) || spacemiddle.test(ageuser) || ageuser == 0 || ageuser.length < 2) {
-        ageuser = prompt(`insert ur age`)
+    while (specials.test(ageuser) || letterssp.test(ageuser) || spacemiddle.test(ageuser)) {
+        ageuser = parent(prompt(`insert ur age`))
+    }
+    console.log(ageuser);
+    while (ageuser <= 0 || ageuser > 100) {
+        ageuser = parseInt(prompt(`insert ur age`))
     }
 
     passuser = prompt (`insert ur password, should have special character from the set: ["@", "#", "-", "+", "*", "/"]`)
@@ -94,11 +102,12 @@ while (confirmpassuser !== passuser) {
     confirmpassuser = prompt(`pleas confirm ur password`)
 }
 
-money = Math.round(Math.random()*100000)
-userInfo = [username,useremail, ageuser, passuser, money];
+money = Math.ceil(Math.random()*100000)
+userInfo = [username, useremail, ageuser, passuser, money];
 console.log(userInfo);
 ask();
 }
+
 
 
 // function for log in
@@ -134,5 +143,7 @@ function changepass() {
 
 // function for log out
 function logout() {
-    ask()
+    while (askuser == `log out`) {
+        ask()
+    }
 }
